@@ -694,6 +694,7 @@ bool canPawnMove(Square board[8][8], Position from, Position to)
 			return true;
 		}
 	}
+	
 	// taking enemy piece
 	else if (abs(to.x - from.x) == 1 and abs(to.y - from.y) == 1)
 	{
@@ -710,26 +711,31 @@ bool canKnightMove(Square board[8][8], Position from, Position to)
 	{
 		return false;
 	}
+	
 	// 2 move forward/Right or Left
 	else if (to.y + 2 == from.y and oppositeColors(board, from, to) == true and from.x + 1 == to.x or from.x - 1 == to.x)
 	{
 		return true;
 	}
+	
 	// 2 move backward/Right or Left
 	else if (to.y - 2 == from.y and oppositeColors(board, from, to) == true and from.x + 1 == to.x or from.x - 1 == to.x)
 	{
 		return true;
 	}
+	
 	// 2 move leftward/Up or Down
 	else if (to.x - 2 == from.x and oppositeColors(board, from, to) == true and from.y + 1 == to.y or from.y - 1 == to.y)
 	{
 		return true;
 	}
+	
 	// 2 move rightward/Up or Down
 	else if (to.x + 2 == from.x and oppositeColors(board, from, to) == true and from.y + 1 == to.y or from.y - 1 == to.y)
 	{
 		return true;
 	}
+	
 	// no other situations left
 	else
 	{
@@ -796,6 +802,7 @@ bool canRookMove(Square board[8][8], Position from, Position to)
 		}
 		return true;
 	}
+	
 	// x Axis Movement Down
 	else if (from.x == to.x and from.y < to.y)
 	{
@@ -821,6 +828,7 @@ bool canRookMove(Square board[8][8], Position from, Position to)
 		}
 		return true;
 	}
+	
 	// y Axis Movement Left
 	else if (from.y == to.y and from.x > to.x)
 	{
@@ -866,6 +874,7 @@ bool canQueenMove(Square board[8][8], Position from, Position to)
 
 	cout << from.x << ", " << from.y << " -> " << \
 		to.x << ", " << to.y << endl;
+	
 	// Check the distance
 	if (abs(from.y - to.y) == abs(from.x - to.x))
 	{
@@ -897,6 +906,7 @@ bool canQueenMove(Square board[8][8], Position from, Position to)
 		}
 		return true;
 	}
+	
 	// x Axis Movement Down
 	else if (from.x == to.x and from.y < to.y)
 	{
@@ -922,6 +932,7 @@ bool canQueenMove(Square board[8][8], Position from, Position to)
 		}
 		return true;
 	}
+	
 	// y Axis Movement Left
 	else if (from.y == to.y and from.x > to.x)
 	{
@@ -934,7 +945,6 @@ bool canQueenMove(Square board[8][8], Position from, Position to)
 		}
 		return true;
 	}
-
 
 	// No Other Moves Left
 	else
@@ -994,8 +1004,8 @@ bool canMovePiece(Square board[8][8], Position from, Position to, bool checkKing
 	switch (board[from.y][from.x].piecetype)
 	{
 		case PAWN:		return canPawnMove(board, from, to);
-		case KNIGHT:	return canKnightMove(board, from, to);
-		case BISHOP:	return canBishopMove(board, from, to);
+		case KNIGHT:		return canKnightMove(board, from, to);
+		case BISHOP:		return canBishopMove(board, from, to);
 		case ROOK:		return canRookMove(board, from, to);
 		case QUEEN:		return canQueenMove(board, from, to);
 		case KING:		return canKingMove(board, from, to, checkKingChecks);
@@ -1027,7 +1037,6 @@ Position input()
 		position.x = inputedInfo[0] - 17 - 48;
 		position.y = 8 - (inputedInfo[1] - 48 - 1) - 1;
 	}
-
 
 	//--cout << position.x << position.y << endl;--
 	return position;
